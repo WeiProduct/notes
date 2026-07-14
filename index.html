@@ -1,296 +1,379 @@
 <!DOCTYPE html>
-<html lang="zh-CN">
+<html lang="en" data-theme="light">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>AI Note - WeiProduct</title>
-    <meta name="description" content="AI Note is a focused note capture and organization product from WeiProduct, built for turning ideas, drafts, and daily notes into useful knowledge.">
-    <meta name="theme-color" content="#2563eb">
+    <meta name="theme-color" content="#2563eb" id="themeColorMeta">
+    <meta name="robots" content="index, follow">
+    <title>AI Note - Capture ideas, organize notes, refine with AI | WeiProduct</title>
+    <meta name="description" content="AI Note is a focused iOS note app for fast capture, clear organization, and AI-assisted writing. Summarize, rewrite, tag, and turn rough notes into useful structure. Bilingual EN / 中文.">
     <meta property="og:type" content="website">
     <meta property="og:site_name" content="WeiProduct">
-    <meta property="og:title" content="AI Note - WeiProduct">
-    <meta property="og:description" content="Capture notes, structure ideas, and refine writing with an AI-assisted productivity workflow.">
+    <meta property="og:title" content="AI Note | Capture, organize, and refine notes with AI">
+    <meta property="og:description" content="A calmer way to collect ideas, structure drafts, and let AI summarize, rewrite, and organize your notes. Bilingual iOS app by WeiProduct.">
     <meta property="og:url" content="https://weiproduct.github.io/notes/">
     <meta property="og:image" content="https://weiproduct.github.io/notes/assets/ainote.png">
-    <meta name="twitter:card" content="summary">
-    <meta name="twitter:title" content="AI Note - WeiProduct">
-    <meta name="twitter:description" content="AI-assisted note capture and organization by WeiProduct.">
+    <meta name="twitter:card" content="summary_large_image">
+    <meta name="twitter:title" content="AI Note | Capture, organize, and refine notes with AI">
+    <meta name="twitter:description" content="Fast capture, clear organization, and AI writing support for iOS. Bilingual EN / 中文, by WeiProduct.">
+    <meta name="twitter:image" content="https://weiproduct.github.io/notes/assets/ainote.png">
     <link rel="canonical" href="https://weiproduct.github.io/notes/">
-    <link rel="icon" href="assets/ainote.png" type="image/png">
-    <link rel="apple-touch-icon" href="assets/ainote.png">
+    <link rel="alternate" hreflang="en" href="https://weiproduct.github.io/notes/">
+    <link rel="alternate" hreflang="zh-CN" href="https://weiproduct.github.io/notes/">
+    <link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'%3E%3Cdefs%3E%3ClinearGradient id='g' x1='0' y1='0' x2='1' y2='1'%3E%3Cstop offset='0' stop-color='%232563eb'/%3E%3Cstop offset='1' stop-color='%2308a7c2'/%3E%3C/linearGradient%3E%3C/defs%3E%3Crect width='100' height='100' rx='24' fill='url(%23g)'/%3E%3Crect x='30' y='26' width='40' height='50' rx='7' fill='none' stroke='white' stroke-width='5'/%3E%3Cpath d='M38 42h24M38 54h24M38 66h14' stroke='white' stroke-width='5' stroke-linecap='round'/%3E%3Cpath d='M72 18l2.2 5.3 5.3 2.2-5.3 2.2L72 33l-2.2-5.3L64.5 25.5l5.3-2.2z' fill='white'/%3E%3C/svg%3E">
+    <link rel="apple-touch-icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'%3E%3Cdefs%3E%3ClinearGradient id='g' x1='0' y1='0' x2='1' y2='1'%3E%3Cstop offset='0' stop-color='%232563eb'/%3E%3Cstop offset='1' stop-color='%2308a7c2'/%3E%3C/linearGradient%3E%3C/defs%3E%3Crect width='100' height='100' rx='24' fill='url(%23g)'/%3E%3Crect x='30' y='26' width='40' height='50' rx='7' fill='none' stroke='white' stroke-width='5'/%3E%3Cpath d='M38 42h24M38 54h24M38 66h14' stroke='white' stroke-width='5' stroke-linecap='round'/%3E%3Cpath d='M72 18l2.2 5.3 5.3 2.2-5.3 2.2L72 33l-2.2-5.3L64.5 25.5l5.3-2.2z' fill='white'/%3E%3C/svg%3E">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="style.css">
     <script type="application/ld+json">
     {
-        "@context": "https://schema.org",
-        "@type": "SoftwareApplication",
-        "name": "AI Note",
-        "applicationCategory": "ProductivityApplication",
-        "operatingSystem": "iOS",
-        "url": "https://weiproduct.github.io/notes/",
-        "downloadUrl": "https://apps.apple.com/app/id6749283592",
-        "image": "https://weiproduct.github.io/notes/assets/ainote.png",
-        "description": "AI-assisted note capture and organization for ideas, drafts, and useful personal knowledge.",
-        "creator": {
-            "@type": "Organization",
-            "name": "WeiProduct",
-            "url": "https://weiproduct.com"
-        },
-        "offers": {
-            "@type": "Offer",
-            "price": "0",
-            "priceCurrency": "USD"
-        }
+      "@context": "https://schema.org",
+      "@type": "SoftwareApplication",
+      "name": "AI Note",
+      "applicationCategory": "ProductivityApplication",
+      "operatingSystem": "iOS",
+      "url": "https://weiproduct.github.io/notes/",
+      "image": "https://weiproduct.github.io/notes/assets/ainote.png",
+      "downloadUrl": "https://apps.apple.com/app/id6749283592",
+      "offers": { "@type": "Offer", "price": "0", "priceCurrency": "USD" },
+      "creator": { "@type": "Organization", "name": "WeiProduct", "url": "https://weiproduct.com" },
+      "description": "AI Note is a focused iOS note app for fast capture, clear organization, and AI-assisted writing — summarize, rewrite, tag, and turn rough notes into useful structure. Bilingual EN / 中文."
+    }
+    </script>
+    <script type="application/ld+json">
+    {
+      "@context": "https://schema.org",
+      "@type": "FAQPage",
+      "mainEntity": [
+        { "@type": "Question", "name": "What can AI Note do?", "acceptedAnswer": { "@type": "Answer", "text": "AI Note lets you capture ideas quickly, organize them with folders and tags, and use AI to summarize, rewrite, classify, and extract actions — turning rough notes into useful structure." } },
+        { "@type": "Question", "name": "Do I need an account to use AI Note?", "acceptedAnswer": { "@type": "Answer", "text": "The product website requires no account. Your notes are your own information, and AI or sync features are presented in the app with clear user controls and platform permissions." } },
+        { "@type": "Question", "name": "Is AI Note bilingual?", "acceptedAnswer": { "@type": "Answer", "text": "Yes. AI Note supports both English and Simplified Chinese interfaces, so you can work in whichever language fits your notes." } },
+        { "@type": "Question", "name": "How does the AI writing support work?", "acceptedAnswer": { "@type": "Answer", "text": "AI actions live close to the writing surface. You can summarize long notes, rewrite for tone and clarity, suggest tags and folders, and extract decisions and follow-up tasks." } },
+        { "@type": "Question", "name": "How much does AI Note cost?", "acceptedAnswer": { "@type": "Answer", "text": "AI Note is free to download on the App Store. It is one of several focused AI utilities in the WeiProduct portfolio." } }
+      ]
     }
     </script>
 </head>
 <body>
-    <nav class="navbar" aria-label="Primary navigation">
-        <div class="container nav-container">
-            <a class="nav-brand" href="#top" aria-label="AI Note home">
-                <img src="assets/ainote.png" alt="" width="32" height="32">
-                <span>AI Note</span>
+    <a class="skip-link" href="#main" data-i18n="skip">Skip to content</a>
+
+    <nav class="navbar" id="navbar" aria-label="Primary">
+        <div class="container">
+            <a class="nav-brand" href="#top" aria-label="AI Note">
+                <span class="brand-icon" aria-hidden="true">
+                    <svg viewBox="0 0 100 100" width="34" height="34"><defs><linearGradient id="bg" x1="0" y1="0" x2="1" y2="1"><stop offset="0" stop-color="#2563eb"/><stop offset="1" stop-color="#08a7c2"/></linearGradient></defs><rect width="100" height="100" rx="24" fill="url(#bg)"/><rect x="30" y="26" width="40" height="50" rx="7" fill="none" stroke="#fff" stroke-width="5"/><path d="M38 42h24M38 54h24M38 66h14" stroke="#fff" stroke-width="5" stroke-linecap="round"/><path d="M72 18l2.2 5.3 5.3 2.2-5.3 2.2L72 33l-2.2-5.3L64.5 25.5l5.3-2.2z" fill="#fff"/></svg>
+                </span>
+                <span class="brand-name">AI Note</span>
             </a>
-            <div class="nav-links" id="nav-links">
-                <a href="#features">Capabilities</a>
-                <a href="#experience">Experience</a>
-                <a href="#ai">AI Workflow</a>
-                <a href="https://apps.apple.com/app/id6749283592" class="nav-cta" target="_blank" rel="noopener noreferrer">App Store</a>
+            <div class="nav-menu">
+                <a href="#how" class="nav-link" data-i18n="navHow">How it works</a>
+                <a href="#features" class="nav-link" data-i18n="navFeatures">Features</a>
+                <a href="#screens" class="nav-link" data-i18n="navScreens">Preview</a>
+                <a href="#faq" class="nav-link" data-i18n="navFaq">FAQ</a>
+                <button class="icon-btn" type="button" id="themeToggle" aria-label="Toggle dark mode">
+                    <svg class="i-sun" viewBox="0 0 24 24" width="20" height="20" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><circle cx="12" cy="12" r="4.5"/><path d="M12 2v2.5M12 19.5V22M2 12h2.5M19.5 12H22M4.9 4.9l1.8 1.8M17.3 17.3l1.8 1.8M19.1 4.9l-1.8 1.8M6.7 17.3l-1.8 1.8"/></svg>
+                    <svg class="i-moon" viewBox="0 0 24 24" width="20" height="20" fill="currentColor"><path d="M21 12.8A8.5 8.5 0 1 1 11.2 3a6.6 6.6 0 0 0 9.8 9.8z"/></svg>
+                </button>
+                <button class="lang-switch" type="button" id="langSwitch" aria-label="Switch language">中文</button>
+                <a href="https://apps.apple.com/app/id6749283592" class="btn btn-primary btn-sm nav-cta" target="_blank" rel="noopener noreferrer" data-i18n="navGet">Get App</a>
             </div>
-            <button class="nav-toggle" type="button" aria-label="Open navigation" aria-expanded="false" aria-controls="nav-links">
-                <span></span>
-                <span></span>
-                <span></span>
-            </button>
         </div>
     </nav>
 
-    <main id="top">
-        <section class="hero">
-            <div class="container hero-grid">
-                <div class="hero-content reveal">
-                    <p class="eyebrow">WeiProduct productivity system</p>
-                    <h1>Capture ideas before they disappear. Turn notes into usable structure.</h1>
-                    <p class="hero-description">
-                        AI Note is a focused note product for quick capture, structured writing, and AI-assisted refinement. It sits inside the broader WeiProduct portfolio of practical AI utilities.
-                    </p>
-                    <div class="hero-actions">
-                        <a href="https://apps.apple.com/app/id6749283592" class="btn btn-primary" target="_blank" rel="noopener noreferrer">Download on the App Store</a>
-                        <a href="#experience" class="btn btn-secondary">View product flow</a>
-                    </div>
-                    <div class="proof-strip" aria-label="Product positioning">
-                        <span>Capture</span>
-                        <span>Organize</span>
-                        <span>Refine</span>
-                    </div>
+    <main id="main">
+    <section class="hero" id="top">
+        <div class="hero-bg" aria-hidden="true"></div>
+        <div class="container">
+            <div class="hero-content">
+                <span class="eyebrow" data-i18n="heroEyebrow">✦ AI-assisted note taking</span>
+                <h1 class="hero-title" data-i18n="heroTitle">Capture ideas. Turn notes into structure.</h1>
+                <p class="hero-subtitle" data-i18n="heroSubtitle">AI Note is a focused iOS app for fast capture, clear organization, and AI writing support — so rough thoughts become useful drafts.</p>
+                <div class="hero-buttons">
+                    <a href="https://apps.apple.com/app/id6749283592" class="badge-link" target="_blank" rel="noopener noreferrer" aria-label="Download on the App Store" data-i18n-aria="downloadAria">
+                        <svg class="appstore-badge" viewBox="0 0 140 44" width="150" height="47" role="img" aria-hidden="true"><rect width="140" height="44" rx="9" fill="#000"/><rect x="0.6" y="0.6" width="138.8" height="42.8" rx="8.4" fill="none" stroke="#4d4d4d" stroke-width="1"/><path transform="translate(11,10) scale(0.92)" fill="#fff" d="M18.71 19.5c-.83 1.24-1.71 2.45-3.05 2.47-1.34.03-1.77-.79-3.29-.79-1.53 0-2 .77-3.27.82-1.31.05-2.3-1.32-3.14-2.53C4.25 17 2.94 12.45 4.7 9.39c.87-1.52 2.43-2.48 4.12-2.51 1.28-.02 2.5.87 3.29.87.78 0 2.26-1.07 3.81-.91.65.03 2.47.26 3.64 1.98-.09.06-2.17 1.28-2.15 3.81.03 3.02 2.65 4.03 2.68 4.04-.03.07-.42 1.44-1.38 2.83M13 3.5c.73-.83 1.94-1.46 2.94-1.5.13 1.17-.34 2.35-1.04 3.19-.69.85-1.83 1.51-2.95 1.42-.15-1.15.41-2.35 1.05-3.11z"/><text x="41" y="18" fill="#fff" font-family="-apple-system, Helvetica, Arial, sans-serif" font-size="8">Download on the</text><text x="40" y="34" fill="#fff" font-family="-apple-system, Helvetica, Arial, sans-serif" font-size="17" font-weight="600">App Store</text></svg>
+                    </a>
+                    <a href="#screens" class="btn btn-secondary" data-i18n="learnMore">See it in action</a>
                 </div>
-
-                <div class="hero-visual reveal" aria-label="AI Note interface preview">
-                    <div class="phone-frame hero-phone">
-                        <div class="phone-status">
-                            <span>9:41</span>
-                            <span></span>
+                <ul class="hero-trust">
+                    <li data-i18n="trust1">✍️ Fast capture</li>
+                    <li data-i18n="trust2">✦ AI writing help</li>
+                    <li data-i18n="trust3">🌏 EN / 中文</li>
+                </ul>
+            </div>
+            <div class="hero-visual">
+                <div class="device" role="img" aria-label="AI Note turning a rough note into a structured outline">
+                    <div class="device-notch" aria-hidden="true"></div>
+                    <div class="dscreen">
+                        <div class="nhead">
+                            <div><span class="nhead-sub" data-i18n="deviceToday">Today</span><span class="nhead-title" data-i18n="deviceNotes">Notes</span></div>
+                            <span class="nhead-ai"><span class="dot"></span><span data-i18n="deviceAi">AI ready</span></span>
                         </div>
-                        <div class="app-header">
-                            <div>
-                                <p>Today</p>
-                                <h2>Notes</h2>
-                            </div>
-                            <div class="app-icon-mini">AI</div>
+                        <div class="nsearch" data-i18n="deviceSearch">Search ideas, meetings, drafts</div>
+                        <div class="ncard active reveal-ev e1">
+                            <span class="nlabel" data-i18n="deviceLabel1">Idea</span>
+                            <h4 data-i18n="deviceCardT1">Investor story outline</h4>
+                            <p data-i18n="deviceCardP1">Clarify the wedge, the product surface, and the portfolio learning loop.</p>
                         </div>
-                        <div class="search-bar">Search ideas, projects, meetings</div>
-                        <div class="note-card active">
-                            <span class="note-label">Product</span>
-                            <h3>Investor story outline</h3>
-                            <p>Clarify the wedge, product surface, and portfolio learning loop.</p>
-                        </div>
-                        <div class="note-card">
-                            <span class="note-label warm">Meeting</span>
-                            <h3>Customer signal notes</h3>
-                            <p>Group repeated requests into next product experiments.</p>
-                        </div>
-                        <div class="ai-panel">
-                            <span>AI suggested structure</span>
-                            <div class="ai-lines">
-                                <span></span><span></span><span></span>
-                            </div>
+                        <div class="aipanel reveal-ev e2">
+                            <div class="aipanel-head"><span class="spark" aria-hidden="true">✦</span><span data-i18n="deviceAiTitle">AI structured your note</span></div>
+                            <ul class="aiout">
+                                <li><b>1.</b> <span data-i18n="deviceOut1">Problem &amp; wedge</span></li>
+                                <li><b>2.</b> <span data-i18n="deviceOut2">Current customer signal</span></li>
+                                <li><b>3.</b> <span data-i18n="deviceOut3">Next product experiment</span></li>
+                            </ul>
                         </div>
                     </div>
                 </div>
+                <div class="hero-chip chip-a" data-i18n="chipA">✦ AI summarized</div>
+                <div class="hero-chip chip-b" data-i18n="chipB"># Tagged · Product</div>
             </div>
-        </section>
+        </div>
+    </section>
 
-        <section id="features" class="section features">
-            <div class="container">
-                <div class="section-heading reveal">
-                    <p class="eyebrow">Core capabilities</p>
-                    <h2>A calmer way to collect, shape, and reuse ideas.</h2>
-                    <p>Every feature is framed around reducing friction: capture fast, organize clearly, and let AI help when the note becomes more than a note.</p>
+    <section class="proof" aria-label="Positioning">
+        <div class="container proof-row">
+            <div class="proof-rating">
+                <div class="stars" aria-hidden="true">★★★★★</div>
+                <div class="proof-sub"><strong>App Store</strong><span data-i18n="proofRating">Productivity · Notes</span></div>
+            </div>
+            <div class="proof-stats">
+                <div class="stat"><strong>Free</strong><span data-i18n="stat1">On the App Store</span></div>
+                <div class="stat"><strong>AI</strong><span data-i18n="stat2">Writing support</span></div>
+                <div class="stat"><strong>EN / 中文</strong><span data-i18n="stat3">Bilingual UI</span></div>
+                <div class="stat"><strong>0</strong><span data-i18n="stat4">Ads · Trackers</span></div>
+            </div>
+        </div>
+    </section>
+
+    <section id="how" class="how">
+        <div class="container">
+            <h2 class="section-title" data-i18n="howTitle">From a stray thought to something useful</h2>
+            <p class="section-sub" data-i18n="howSub">Three steps, low friction — capture fast, keep it organized, refine when it matters.</p>
+            <div class="steps">
+                <div class="step reveal">
+                    <div class="step-badge">1</div>
+                    <div class="step-ic" aria-hidden="true"><svg viewBox="0 0 24 24" width="26" height="26" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M12 20h9"/><path d="M16.5 3.5a2.1 2.1 0 0 1 3 3L7 19l-4 1 1-4z"/></svg></div>
+                    <h3 data-i18n="step1Title">Capture it fast</h3>
+                    <p data-i18n="step1Desc">Open a clean writing space in a tap for thoughts, meeting points, reading notes, and product ideas.</p>
                 </div>
-
-                <div class="feature-grid">
-                    <article class="feature-card reveal">
-                        <span class="feature-mark">01</span>
-                        <h3>Fast capture</h3>
-                        <p>Open a clean writing space quickly for thoughts, meeting points, reading notes, and product ideas.</p>
-                    </article>
-                    <article class="feature-card reveal">
-                        <span class="feature-mark">02</span>
-                        <h3>Structured organization</h3>
-                        <p>Keep notes readable with folders, tags, and lightweight context so information can be found again.</p>
-                    </article>
-                    <article class="feature-card reveal">
-                        <span class="feature-mark">03</span>
-                        <h3>AI writing support</h3>
-                        <p>Use AI to summarize, rewrite, clarify, and turn rough fragments into useful drafts.</p>
-                    </article>
-                    <article class="feature-card reveal">
-                        <span class="feature-mark">04</span>
-                        <h3>Searchable knowledge</h3>
-                        <p>Design notes as a reusable knowledge layer rather than a pile of isolated documents.</p>
-                    </article>
+                <div class="step reveal">
+                    <div class="step-badge">2</div>
+                    <div class="step-ic" aria-hidden="true"><svg viewBox="0 0 24 24" width="26" height="26" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M3 7h6l2 2h10v9a2 2 0 0 1-2 2H3z"/><path d="M3 7V5a2 2 0 0 1 2-2h3l2 2"/></svg></div>
+                    <h3 data-i18n="step2Title">Keep it organized</h3>
+                    <p data-i18n="step2Desc">Folders, tags, and lightweight context keep notes readable, so information can be found again.</p>
+                </div>
+                <div class="step reveal">
+                    <div class="step-badge">3</div>
+                    <div class="step-ic" aria-hidden="true"><svg viewBox="0 0 24 24" width="26" height="26" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M12 3l1.9 4.1L18 9l-4.1 1.9L12 15l-1.9-4.1L6 9l4.1-1.9z"/><path d="M18 15l.9 2 2 .9-2 .9-.9 2-.9-2-2-.9 2-.9z"/></svg></div>
+                    <h3 data-i18n="step3Title">Refine with AI</h3>
+                    <p data-i18n="step3Desc">Summarize, rewrite, tag, and extract actions to turn rough fragments into useful drafts.</p>
                 </div>
             </div>
-        </section>
+        </div>
+    </section>
 
-        <section id="experience" class="section experience">
-            <div class="container">
-                <div class="section-heading reveal">
-                    <p class="eyebrow">Product experience</p>
-                    <h2>Previewed as real interface states, not broken screenshots.</h2>
-                    <p>The page uses code-rendered product states so the site stays reliable even before final App Store media is attached.</p>
+    <section id="features" class="features">
+        <div class="container">
+            <h2 class="section-title" data-i18n="featuresTitle">Core capabilities</h2>
+            <p class="section-sub" data-i18n="featuresSub">Every feature is framed around reducing friction — capture fast, organize clearly, and let AI help when a note becomes more than a note.</p>
+            <div class="features-grid">
+                <div class="feature-card reveal">
+                    <div class="feature-icon" aria-hidden="true"><svg viewBox="0 0 24 24" width="26" height="26" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"><path d="M13 2v6h6"/><path d="M13 2l6 6v11a2 2 0 0 1-2 2H7a2 2 0 0 1-2-2V4a2 2 0 0 1 2-2z"/><path d="M9 13h6M9 17h4"/></svg></div>
+                    <h3 data-i18n="feature1Title">Fast capture</h3>
+                    <p data-i18n="feature1Desc">A clean writing space opens quickly for thoughts, meeting points, reading notes, and product ideas.</p>
                 </div>
+                <div class="feature-card reveal">
+                    <div class="feature-icon" aria-hidden="true"><svg viewBox="0 0 24 24" width="26" height="26" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"><path d="M3 7h6l2 2h10v9a2 2 0 0 1-2 2H3z"/><path d="M3 7V5a2 2 0 0 1 2-2h3l2 2"/></svg></div>
+                    <h3 data-i18n="feature2Title">Structured organization</h3>
+                    <p data-i18n="feature2Desc">Folders, tags, and lightweight context keep notes readable so information can be found again.</p>
+                </div>
+                <div class="feature-card reveal">
+                    <div class="feature-icon" aria-hidden="true"><svg viewBox="0 0 24 24" width="26" height="26" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"><path d="M12 3l1.9 4.1L18 9l-4.1 1.9L12 15l-1.9-4.1L6 9l4.1-1.9z"/><path d="M18 15l.9 2 2 .9-2 .9-.9 2-.9-2-2-.9 2-.9z"/></svg></div>
+                    <h3 data-i18n="feature3Title">AI writing support</h3>
+                    <p data-i18n="feature3Desc">Summarize, rewrite, clarify, and turn rough fragments into useful drafts — right beside the text.</p>
+                </div>
+                <div class="feature-card reveal">
+                    <div class="feature-icon" aria-hidden="true"><svg viewBox="0 0 24 24" width="26" height="26" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"><circle cx="11" cy="11" r="7"/><path d="M21 21l-4.3-4.3"/></svg></div>
+                    <h3 data-i18n="feature4Title">Searchable knowledge</h3>
+                    <p data-i18n="feature4Desc">Notes become a reusable knowledge layer, not a pile of isolated documents you never reopen.</p>
+                </div>
+                <div class="feature-card reveal">
+                    <div class="feature-icon" aria-hidden="true"><svg viewBox="0 0 24 24" width="26" height="26" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="9"/><path d="M3 12h18M12 3c2.5 2.5 3.8 5.7 3.8 9s-1.3 6.5-3.8 9c-2.5-2.5-3.8-5.7-3.8-9S9.5 5.5 12 3z"/></svg></div>
+                    <h3 data-i18n="feature5Title">Bilingual interface</h3>
+                    <p data-i18n="feature5Desc">Full support for English and Simplified Chinese, so you can work in whichever language fits.</p>
+                </div>
+                <div class="feature-card reveal">
+                    <div class="feature-icon" aria-hidden="true"><svg viewBox="0 0 24 24" width="26" height="26" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"><path d="M12 2.5l7 3v5c0 4.4-3 8.3-7 9.5-4-1.2-7-5.1-7-9.5v-5z"/><path d="M9 12l2 2 4-4"/></svg></div>
+                    <h3 data-i18n="feature6Title">Your notes stay yours</h3>
+                    <p data-i18n="feature6Desc">No account needed to browse. Your notes are your information, with clear controls over AI features.</p>
+                </div>
+            </div>
+        </div>
+    </section>
 
-                <div class="experience-grid">
-                    <article class="screen-card reveal">
-                        <div class="phone-frame compact">
-                            <div class="mock-list">
-                                <span></span>
-                                <h3>Idea inbox</h3>
-                                <p>Portfolio review points</p>
-                                <p>Market observations</p>
-                                <p>Design direction notes</p>
+    <section id="screens" class="screens">
+        <div class="container">
+            <h2 class="section-title" data-i18n="screensTitle">See it in action</h2>
+            <p class="section-sub" data-i18n="screensSub">Swipe through the interface — tap any screen to zoom in.</p>
+            <div class="gallery">
+                <button class="gal-arrow prev" type="button" aria-label="Previous" id="galPrev">‹</button>
+                <div class="gal-track" id="galTrack">
+                    <figure class="shot reveal">
+                        <div class="device sm zoomable" tabindex="0" role="button" aria-label="Zoom Capture inbox">
+                            <div class="device-notch" aria-hidden="true"></div>
+                            <div class="dscreen">
+                                <div class="nhead"><div><span class="nhead-sub" data-i18n="deviceToday">Today</span><span class="nhead-title" data-i18n="s1Head">Idea inbox</span></div><span class="nhead-ai"><span class="dot"></span><span data-i18n="deviceAi">AI ready</span></span></div>
+                                <div class="ncard"><span class="nlabel" data-i18n="s1L1">Product</span><h4 data-i18n="s1T1">Portfolio review points</h4><p data-i18n="s1P1">What to keep, cut, and double down on this quarter.</p></div>
+                                <div class="ncard"><span class="nlabel v" data-i18n="s1L2">Market</span><h4 data-i18n="s1T2">Market observations</h4><p data-i18n="s1P2">Signals worth turning into experiments.</p></div>
+                                <div class="ncard"><span class="nlabel m" data-i18n="s1L3">Design</span><h4 data-i18n="s1T3">Design direction notes</h4><p data-i18n="s1P3">Calm, clean, reduce friction everywhere.</p></div>
                             </div>
                         </div>
-                        <h3>Capture inbox</h3>
-                        <p>A clean starting point for thoughts that are not ready to be organized yet.</p>
-                    </article>
-                    <article class="screen-card reveal">
-                        <div class="phone-frame compact">
-                            <div class="mock-editor">
-                                <span></span>
-                                <h3>Draft</h3>
-                                <span class="editor-line"></span>
-                                <span class="editor-line"></span>
-                                <span class="editor-line short"></span>
-                                <button type="button">Refine with AI</button>
+                        <figcaption data-i18n="s1cap">Capture inbox — a clean home for raw thoughts</figcaption>
+                    </figure>
+                    <figure class="shot reveal">
+                        <div class="device sm zoomable" tabindex="0" role="button" aria-label="Zoom Focused editor">
+                            <div class="device-notch" aria-hidden="true"></div>
+                            <div class="dscreen">
+                                <div class="nhead"><div><span class="nhead-sub" data-i18n="s2Sub">Draft</span><span class="nhead-title" data-i18n="s2Head">Customer signal</span></div><span class="nlabel warm" data-i18n="s2L">Meeting</span></div>
+                                <div class="editor">
+                                    <span class="eline"></span><span class="eline"></span><span class="eline short"></span>
+                                    <span class="eline"></span><span class="eline short"></span>
+                                </div>
+                                <div class="editor-tools"><button type="button" class="etool" data-i18n="s2Tool1">Summarize</button><button type="button" class="etool primary" data-i18n="s2Tool2">✦ Refine with AI</button></div>
                             </div>
                         </div>
-                        <h3>Focused editor</h3>
-                        <p>Minimal chrome, clear hierarchy, and AI actions close to the writing surface.</p>
-                    </article>
-                    <article class="screen-card reveal">
-                        <div class="phone-frame compact">
-                            <div class="mock-ai">
-                                <span>AI</span>
-                                <h3>Suggested outline</h3>
-                                <p>1. Problem</p>
-                                <p>2. Current signal</p>
-                                <p>3. Next action</p>
+                        <figcaption data-i18n="s2cap">Focused editor — minimal chrome, AI within reach</figcaption>
+                    </figure>
+                    <figure class="shot reveal">
+                        <div class="device sm zoomable" tabindex="0" role="button" aria-label="Zoom AI structure">
+                            <div class="device-notch" aria-hidden="true"></div>
+                            <div class="dscreen">
+                                <div class="nhead"><div><span class="nhead-sub" data-i18n="s3Sub">AI result</span><span class="nhead-title" data-i18n="s3Head">Suggested outline</span></div><span class="nhead-ai"><span class="spark" aria-hidden="true">✦</span></span></div>
+                                <div class="aipanel solo"><ul class="aiout lg"><li><b>1.</b> <span data-i18n="s3O1">Problem</span></li><li><b>2.</b> <span data-i18n="s3O2">Current signal</span></li><li><b>3.</b> <span data-i18n="s3O3">Next action</span></li></ul></div>
+                                <div class="chiprow"><span class="minichip" data-i18n="s3C1">Summary</span><span class="minichip" data-i18n="s3C2">Rewrite</span><span class="minichip" data-i18n="s3C3">Actions</span></div>
                             </div>
                         </div>
-                        <h3>AI structure</h3>
-                        <p>Convert messy notes into summaries, outlines, and next-step prompts.</p>
-                    </article>
+                        <figcaption data-i18n="s3cap">AI structure — outlines, summaries, next steps</figcaption>
+                    </figure>
+                    <figure class="shot reveal">
+                        <div class="device sm zoomable" tabindex="0" role="button" aria-label="Zoom Search and knowledge">
+                            <div class="device-notch" aria-hidden="true"></div>
+                            <div class="dscreen">
+                                <div class="nhead"><div><span class="nhead-sub" data-i18n="deviceToday">Today</span><span class="nhead-title" data-i18n="s4Head">Search</span></div></div>
+                                <div class="nsearch active" data-i18n="s4Query">roadmap</div>
+                                <div class="ncard"><span class="nlabel" data-i18n="s4L1">Product</span><h4 data-i18n="s4T1">Q3 roadmap draft</h4><p data-i18n="s4P1">3 notes · updated 2d ago</p></div>
+                                <div class="ncard"><span class="nlabel v" data-i18n="s4L2">Notes</span><h4 data-i18n="s4T2">Roadmap review comments</h4><p data-i18n="s4P2">Grouped by tag automatically.</p></div>
+                            </div>
+                        </div>
+                        <figcaption data-i18n="s4cap">Searchable knowledge — find any note again</figcaption>
+                    </figure>
+                    <figure class="shot reveal">
+                        <div class="device sm zoomable" tabindex="0" role="button" aria-label="Zoom Folders and tags">
+                            <div class="device-notch" aria-hidden="true"></div>
+                            <div class="dscreen">
+                                <div class="nhead"><div><span class="nhead-sub" data-i18n="s5Sub">Library</span><span class="nhead-title" data-i18n="s5Head">Folders</span></div></div>
+                                <div class="frow"><span class="fic" aria-hidden="true">📁</span><span class="fname" data-i18n="s5F1">Product</span><span class="fcount">12</span></div>
+                                <div class="frow"><span class="fic" aria-hidden="true">📁</span><span class="fname" data-i18n="s5F2">Meetings</span><span class="fcount">8</span></div>
+                                <div class="frow"><span class="fic" aria-hidden="true">📁</span><span class="fname" data-i18n="s5F3">Reading</span><span class="fcount">21</span></div>
+                                <div class="chiprow"><span class="minichip" data-i18n="s5C1"># idea</span><span class="minichip" data-i18n="s5C2"># signal</span><span class="minichip" data-i18n="s5C3"># action</span></div>
+                            </div>
+                        </div>
+                        <figcaption data-i18n="s5cap">Folders &amp; tags — a knowledge system that lasts</figcaption>
+                    </figure>
                 </div>
+                <button class="gal-arrow next" type="button" aria-label="Next" id="galNext">›</button>
             </div>
-        </section>
+            <div class="gal-dots" id="galDots" aria-hidden="true"></div>
+            <p class="screens-note" data-i18n="screensNote">Interface previews are rendered in code to stay reliable while App Store media is finalized.</p>
+        </div>
+    </section>
 
-        <section id="ai" class="section ai-section">
-            <div class="container ai-grid">
-                <div class="section-heading left reveal">
-                    <p class="eyebrow">AI workflow</p>
-                    <h2>Built around practical assistance, not novelty.</h2>
-                    <p>AI Note focuses on the moments where AI can remove real work: making notes clearer, shorter, better organized, and easier to act on.</p>
-                </div>
-                <div class="workflow-list">
-                    <article class="workflow-item reveal">
-                        <span>Summarize</span>
-                        <p>Compress long notes into concise takeaways without losing the user's original context.</p>
-                    </article>
-                    <article class="workflow-item reveal">
-                        <span>Rewrite</span>
-                        <p>Improve tone, clarity, and structure for drafts that need to become messages, plans, or documents.</p>
-                    </article>
-                    <article class="workflow-item reveal">
-                        <span>Classify</span>
-                        <p>Suggest tags and folders so the knowledge system becomes easier to maintain over time.</p>
-                    </article>
-                    <article class="workflow-item reveal">
-                        <span>Extract actions</span>
-                        <p>Find decisions, open questions, and follow-up tasks inside meeting notes and idea logs.</p>
-                    </article>
-                </div>
+    <section class="privacy">
+        <div class="container privacy-card reveal">
+            <div class="privacy-lead">
+                <h2 data-i18n="privacyTitle">Your notes are your own</h2>
+                <p data-i18n="privacyDesc">No account is needed to browse this site. Your notes are user-owned information, and AI or sync features are presented in the app with clear controls and platform permissions.</p>
             </div>
-        </section>
+            <ul class="privacy-points">
+                <li><span aria-hidden="true">🔐</span><span data-i18n="pp1">Notes belong to you</span></li>
+                <li><span aria-hidden="true">🎛️</span><span data-i18n="pp2">Clear AI controls</span></li>
+                <li><span aria-hidden="true">🚫</span><span data-i18n="pp3">No ads, no trackers</span></li>
+                <li><span aria-hidden="true">🌐</span><span data-i18n="pp4">No account to browse</span></li>
+            </ul>
+        </div>
+    </section>
 
-        <section class="section company-context">
-            <div class="container context-panel reveal">
-                <div>
-                    <p class="eyebrow">Why WeiProduct</p>
-                    <h2>One product in a larger portfolio of focused AI utilities.</h2>
-                </div>
-                <p>
-                    AI Note complements WeiProduct's planning, health, weather, finance, voice, and daily organization apps. The company direction is a portfolio of small, understandable tools that turn everyday user intent into useful software surfaces.
-                </p>
-                <a href="https://weiproduct.com" class="text-link">Visit company site</a>
+    <section id="faq" class="faq">
+        <div class="container">
+            <h2 class="section-title" data-i18n="faqTitle">Frequently asked questions</h2>
+            <div class="faq-list">
+                <details class="faq-item reveal"><summary data-i18n="q1">What can AI Note do?</summary><p data-i18n="a1">Capture ideas quickly, organize them with folders and tags, and use AI to summarize, rewrite, classify, and extract actions — turning rough notes into useful structure.</p></details>
+                <details class="faq-item reveal"><summary data-i18n="q2">Do I need an account to use AI Note?</summary><p data-i18n="a2">The website needs no account. Your notes are your own information, and AI or sync features are presented in the app with clear user controls and platform permissions.</p></details>
+                <details class="faq-item reveal"><summary data-i18n="q3">Is AI Note bilingual?</summary><p data-i18n="a3">Yes. AI Note supports both English and Simplified Chinese interfaces, so you can work in whichever language fits your notes.</p></details>
+                <details class="faq-item reveal"><summary data-i18n="q4">How does the AI writing support work?</summary><p data-i18n="a4">AI actions live close to the writing surface. You can summarize long notes, rewrite for tone and clarity, suggest tags and folders, and extract decisions and follow-up tasks.</p></details>
+                <details class="faq-item reveal"><summary data-i18n="q5">How much does AI Note cost?</summary><p data-i18n="a5">AI Note is free to download on the App Store. It is one of several focused AI utilities in the WeiProduct portfolio.</p></details>
             </div>
-        </section>
+        </div>
+    </section>
 
-        <section id="download" class="download">
-            <div class="container download-card reveal">
-                <p class="eyebrow">Availability</p>
-                <h2>AI Note is part of the WeiProduct product portfolio.</h2>
-                <p>AI Note is available on the App Store. For partnership questions or product feedback, contact WeiProduct directly.</p>
-                <div class="download-actions">
-                    <a href="https://apps.apple.com/app/id6749283592" class="btn btn-primary" target="_blank" rel="noopener noreferrer">Download on the App Store</a>
-                    <a href="https://github.com/WeiProduct/notes" class="btn btn-secondary">View repository</a>
+    <section id="download" class="download">
+        <div class="container">
+            <div class="download-content reveal">
+                <h2 data-i18n="downloadTitle">Start turning notes into knowledge</h2>
+                <p data-i18n="downloadSubtitle">AI Note is available now on the App Store — part of the WeiProduct portfolio of focused AI utilities.</p>
+                <div class="download-buttons">
+                    <a href="https://apps.apple.com/app/id6749283592" class="badge-link" target="_blank" rel="noopener noreferrer" aria-label="Download on the App Store">
+                        <svg class="appstore-badge" viewBox="0 0 140 44" width="168" height="53" role="img" aria-hidden="true"><rect width="140" height="44" rx="9" fill="#000"/><rect x="0.6" y="0.6" width="138.8" height="42.8" rx="8.4" fill="none" stroke="#4d4d4d" stroke-width="1"/><path transform="translate(11,10) scale(0.92)" fill="#fff" d="M18.71 19.5c-.83 1.24-1.71 2.45-3.05 2.47-1.34.03-1.77-.79-3.29-.79-1.53 0-2 .77-3.27.82-1.31.05-2.3-1.32-3.14-2.53C4.25 17 2.94 12.45 4.7 9.39c.87-1.52 2.43-2.48 4.12-2.51 1.28-.02 2.5.87 3.29.87.78 0 2.26-1.07 3.81-.91.65.03 2.47.26 3.64 1.98-.09.06-2.17 1.28-2.15 3.81.03 3.02 2.65 4.03 2.68 4.04-.03.07-.42 1.44-1.38 2.83M13 3.5c.73-.83 1.94-1.46 2.94-1.5.13 1.17-.34 2.35-1.04 3.19-.69.85-1.83 1.51-2.95 1.42-.15-1.15.41-2.35 1.05-3.11z"/><text x="41" y="18" fill="#fff" font-family="-apple-system, Helvetica, Arial, sans-serif" font-size="8">Download on the</text><text x="40" y="34" fill="#fff" font-family="-apple-system, Helvetica, Arial, sans-serif" font-size="17" font-weight="600">App Store</text></svg>
+                    </a>
+                    <a href="https://weiproduct.com" class="btn btn-ghost" target="_blank" rel="noopener noreferrer" data-i18n="downloadCompany">Visit WeiProduct</a>
                 </div>
+                <p class="download-note" data-i18n="downloadNote">Free on the App Store · iOS</p>
             </div>
-        </section>
+        </div>
+    </section>
     </main>
 
     <footer class="footer">
         <div class="container footer-grid">
-            <div>
+            <div class="footer-brandcol">
                 <a class="footer-brand" href="#top">
-                    <img src="assets/ainote.png" alt="" width="28" height="28">
+                    <span class="brand-icon sm" aria-hidden="true"><svg viewBox="0 0 100 100" width="30" height="30"><rect width="100" height="100" rx="24" fill="url(#bg)"/><rect x="30" y="26" width="40" height="50" rx="7" fill="none" stroke="#fff" stroke-width="5"/><path d="M38 42h24M38 54h24M38 66h14" stroke="#fff" stroke-width="5" stroke-linecap="round"/></svg></span>
                     <span>AI Note</span>
                 </a>
-                <p>Note capture and organization for ideas that need to become useful.</p>
+                <p data-i18n="footerTag">Note capture and organization for ideas that need to become useful.</p>
             </div>
-            <div>
-                <h3>Product</h3>
-                <a href="#features">Capabilities</a>
-                <a href="#experience">Experience</a>
-                <a href="#ai">AI workflow</a>
+            <div class="footer-col">
+                <h3 data-i18n="footerProduct">Product</h3>
+                <a href="#features" data-i18n="navFeatures">Features</a>
+                <a href="#screens" data-i18n="navScreens">Preview</a>
+                <a href="#faq" data-i18n="navFaq">FAQ</a>
             </div>
-            <div>
-                <h3>Company</h3>
+            <div class="footer-col">
+                <h3 data-i18n="footerCompany">Company</h3>
                 <a href="https://weiproduct.com">WeiProduct</a>
-                <a href="privacy.html">Privacy</a>
-                <a href="terms.html">Terms</a>
+                <a href="privacy.html" data-i18n="footerPrivacy">Privacy</a>
+                <a href="terms.html" data-i18n="footerTerms">Terms</a>
             </div>
-            <div>
-                <h3>Contact</h3>
+            <div class="footer-col">
+                <h3 data-i18n="footerContact">Contact</h3>
                 <a href="https://apps.apple.com/app/id6749283592" target="_blank" rel="noopener noreferrer">App Store</a>
                 <a href="mailto:1597498880weiproduct@gmail.com">Email</a>
                 <a href="https://github.com/WeiProduct/notes">GitHub</a>
             </div>
         </div>
         <div class="container footer-bottom">
-            <p>&copy; 2026 WeiProduct. All rights reserved.</p>
+            <p>&copy; <span id="currentYear">2026</span> WeiProduct. <span data-i18n="footerRights">All rights reserved.</span></p>
         </div>
     </footer>
+
+    <div class="sticky-cta" id="stickyCta">
+        <div class="sticky-app">
+            <span class="brand-icon sm" aria-hidden="true"><svg viewBox="0 0 100 100" width="30" height="30"><rect width="100" height="100" rx="24" fill="url(#bg)"/><rect x="30" y="26" width="40" height="50" rx="7" fill="none" stroke="#fff" stroke-width="5"/><path d="M38 42h24M38 54h24M38 66h14" stroke="#fff" stroke-width="5" stroke-linecap="round"/></svg></span>
+            <div class="sticky-txt"><strong>AI Note</strong><span data-i18n="stickySub">Capture &amp; refine · Free</span></div>
+        </div>
+        <a href="https://apps.apple.com/app/id6749283592" class="btn btn-primary btn-sm" target="_blank" rel="noopener noreferrer" data-i18n="stickyGet">Get</a>
+    </div>
 
     <script src="script.js"></script>
 </body>
