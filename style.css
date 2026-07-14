@@ -125,11 +125,11 @@ a:focus-visible, button:focus-visible, summary:focus-visible, [role="button"]:fo
 
 /* ---------- Device (shared: hero + gallery) ---------- */
 .hero-visual { position: relative; display: flex; justify-content: center; }
-.device { position: relative; width: 300px; max-width: 78vw; background: var(--card); border: 1px solid var(--border-color); border-radius: 40px; padding: 16px 14px 20px; box-shadow: var(--shadow-lg); }
+.device { position: relative; width: 300px; max-width: 78vw; aspect-ratio: 9 / 19.5; display: flex; flex-direction: column; overflow: hidden; background: var(--card); border: 1px solid var(--border-color); border-radius: 40px; padding: 16px 14px 20px; box-shadow: var(--shadow-lg); }
 .device.sm { width: 258px; max-width: 70vw; }
 .device-notch { position: absolute; top: 12px; left: 50%; transform: translateX(-50%); width: 88px; height: 22px; background: var(--text-primary); opacity: .9; border-radius: 999px; }
 :root[data-theme="dark"] .device-notch { background: #000; opacity: 1; }
-.dscreen { margin-top: 30px; display: flex; flex-direction: column; gap: 10px; }
+.dscreen { flex: 1; min-height: 0; margin-top: 30px; display: flex; flex-direction: column; gap: 12px; justify-content: space-between; }
 .nhead { display: flex; align-items: flex-start; justify-content: space-between; padding: 2px 4px 4px; }
 .nhead-sub { display: block; font-size: 11px; font-weight: 600; color: var(--text-secondary); text-transform: uppercase; letter-spacing: .05em; }
 .nhead-title { display: block; font-weight: 800; font-size: 21px; letter-spacing: -0.02em; }
