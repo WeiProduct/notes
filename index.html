@@ -68,6 +68,7 @@
             </a>
             <div class="nav-menu">
                 <a href="#how" class="nav-link" data-i18n="navHow">How it works</a>
+                <a href="#try" class="nav-link" data-i18n="navTry">Try it</a>
                 <a href="#features" class="nav-link" data-i18n="navFeatures">Features</a>
                 <a href="#screens" class="nav-link" data-i18n="navScreens">Preview</a>
                 <a href="#faq" class="nav-link" data-i18n="navFaq">FAQ</a>
@@ -79,6 +80,7 @@
                 <a href="https://apps.apple.com/app/id6749283592" class="btn btn-primary btn-sm nav-cta" target="_blank" rel="noopener noreferrer" data-i18n="navGet">Get App</a>
             </div>
         </div>
+        <div class="progress" id="progressBar" aria-hidden="true"></div>
     </nav>
 
     <main id="main">
@@ -148,6 +150,7 @@
 
     <section id="how" class="how">
         <div class="container">
+            <span class="eyebrow center" data-i18n="howEyebrow">The flow</span>
             <h2 class="section-title" data-i18n="howTitle">From a stray thought to something useful</h2>
             <p class="section-sub" data-i18n="howSub">Three steps, low friction — capture fast, keep it organized, refine when it matters.</p>
             <div class="steps">
@@ -173,8 +176,43 @@
         </div>
     </section>
 
+    <section id="try" class="try">
+        <div class="container">
+            <span class="eyebrow center" data-i18n="tryEyebrow">Playground</span>
+            <h2 class="section-title" data-i18n="tryTitle">Feel the refine step</h2>
+            <p class="section-sub" data-i18n="trySub">Pick a rough note, tap an AI action — this is the exact loop inside the app. Everything below runs right on this page.</p>
+            <div class="demo reveal">
+                <div class="demo-tabs" role="group" aria-label="Sample notes">
+                    <button type="button" class="demo-tab active" data-demo="meeting" aria-pressed="true" data-i18n="tryTabMeeting">Meeting</button>
+                    <button type="button" class="demo-tab" data-demo="reading" aria-pressed="false" data-i18n="tryTabReading">Reading</button>
+                    <button type="button" class="demo-tab" data-demo="idea" aria-pressed="false" data-i18n="tryTabIdea">Idea</button>
+                </div>
+                <div class="demo-panes">
+                    <div class="demo-note">
+                        <div><span class="nlabel" data-i18n="tryNoteLabel">Rough note</span></div>
+                        <p class="demo-note-body" data-demo-note="meeting" data-i18n="demoNoteMeeting">mtg w/ Lin 3pm — pricing?? launch slipping, Sam owns beta list, need follow-up email, decide free tier limits</p>
+                        <p class="demo-note-body" data-demo-note="reading" data-i18n="demoNoteReading" hidden>article on habit loops — cue routine reward, environment design &gt; willpower, apply to onboarding? ch3 examples good</p>
+                        <p class="demo-note-body" data-demo-note="idea" data-i18n="demoNoteIdea" hidden>widget idea: capture from lock screen, voice too? auto tags?? maybe share sheet first, check what competitors miss</p>
+                        <div class="demo-chips">
+                            <button type="button" class="demo-chip" data-act="summary" aria-pressed="false" data-i18n="demoActSummary">Summarize</button>
+                            <button type="button" class="demo-chip" data-act="outline" aria-pressed="false" data-i18n="demoActOutline">Outline</button>
+                            <button type="button" class="demo-chip" data-act="actions" aria-pressed="false" data-i18n="demoActActions">Extract actions</button>
+                        </div>
+                    </div>
+                    <div class="demo-result aipanel" aria-live="polite">
+                        <div class="aipanel-head"><span class="spark" aria-hidden="true">✦</span><span data-i18n="deviceAiTitle">AI structured your note</span></div>
+                        <ul class="aiout" id="demoOut">
+                            <li class="demo-hint" data-i18n="demoHint">Tap an AI action on the left to see the result.</li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
     <section id="features" class="features">
         <div class="container">
+            <span class="eyebrow center" data-i18n="featuresEyebrow">Capabilities</span>
             <h2 class="section-title" data-i18n="featuresTitle">Core capabilities</h2>
             <p class="section-sub" data-i18n="featuresSub">Every feature is framed around reducing friction — capture fast, organize clearly, and let AI help when a note becomes more than a note.</p>
             <div class="features-grid">
@@ -212,8 +250,43 @@
         </div>
     </section>
 
+    <section id="personas" class="personas">
+        <div class="container">
+            <span class="eyebrow center" data-i18n="personasEyebrow">Made for real workflows</span>
+            <h2 class="section-title" data-i18n="personasTitle">Whose notes become knowledge?</h2>
+            <p class="section-sub" data-i18n="personasSub">Four everyday workflows AI Note is shaped around — find yours.</p>
+            <div class="personas-grid">
+                <div class="persona-card reveal">
+                    <div class="persona-icon" aria-hidden="true"><svg viewBox="0 0 24 24" width="24" height="24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"><path d="M12 2l9 5-9 5-9-5z"/><path d="M3 12l9 5 9-5"/><path d="M3 17l9 5 9-5"/></svg></div>
+                    <h3 data-i18n="persona1Name">Product builder</h3>
+                    <p data-i18n="persona1Desc">Turns scattered signals into a roadmap draft.</p>
+                    <span class="minichip" data-i18n="persona1Chip">✦ Outline</span>
+                </div>
+                <div class="persona-card reveal">
+                    <div class="persona-icon" aria-hidden="true"><svg viewBox="0 0 24 24" width="24" height="24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="5" width="18" height="16" rx="3"/><path d="M8 3v4M16 3v4M3 10h18"/><path d="M9 15.5l2 2 4-4"/></svg></div>
+                    <h3 data-i18n="persona2Name">Meeting-heavy operator</h3>
+                    <p data-i18n="persona2Desc">Leaves every meeting with decisions and follow-ups.</p>
+                    <span class="minichip" data-i18n="persona2Chip">✦ Extract actions</span>
+                </div>
+                <div class="persona-card reveal">
+                    <div class="persona-icon" aria-hidden="true"><svg viewBox="0 0 24 24" width="24" height="24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"><path d="M12 6.5C10.5 4.8 8.2 4 5.5 4H3v14h3c2.4 0 4.5.8 6 2.5 1.5-1.7 3.6-2.5 6-2.5h3V4h-2.5c-2.7 0-5 .8-6.5 2.5z"/><path d="M12 6.5v14"/></svg></div>
+                    <h3 data-i18n="persona3Name">Reader &amp; researcher</h3>
+                    <p data-i18n="persona3Desc">Compresses long reads into reusable summaries.</p>
+                    <span class="minichip" data-i18n="persona3Chip">✦ Summarize</span>
+                </div>
+                <div class="persona-card reveal">
+                    <div class="persona-icon" aria-hidden="true"><svg viewBox="0 0 24 24" width="24" height="24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="9"/><path d="M3 12h18M12 3c2.5 2.5 3.8 5.7 3.8 9s-1.3 6.5-3.8 9c-2.5-2.5-3.8-5.7-3.8-9S9.5 5.5 12 3z"/></svg></div>
+                    <h3 data-i18n="persona4Name">Bilingual writer</h3>
+                    <p data-i18n="persona4Desc">Drafts in 中文, refines in English — or the reverse.</p>
+                    <span class="minichip">EN / 中文</span>
+                </div>
+            </div>
+        </div>
+    </section>
+
     <section id="screens" class="screens">
         <div class="container">
+            <span class="eyebrow center" data-i18n="screensEyebrow">Preview</span>
             <h2 class="section-title" data-i18n="screensTitle">See it in action</h2>
             <p class="section-sub" data-i18n="screensSub">Swipe through the interface — tap any screen to zoom in.</p>
             <div class="gallery">
@@ -289,9 +362,46 @@
         </div>
     </section>
 
+    <section id="loop" class="loop">
+        <div class="container">
+            <span class="eyebrow center" data-i18n="loopEyebrow">The method</span>
+            <h2 class="section-title" data-i18n="loopTitle">Not a pile of notes — a loop</h2>
+            <p class="section-sub" data-i18n="loopSub">Most notes die right after capture. AI Note keeps them moving through a loop, so old writing keeps paying off.</p>
+            <div class="loop-diagram reveal">
+                <div class="loop-nodes">
+                    <div class="loop-node">
+                        <div class="loop-ic" aria-hidden="true"><svg viewBox="0 0 24 24" width="22" height="22" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M12 20h9"/><path d="M16.5 3.5a2.1 2.1 0 0 1 3 3L7 19l-4 1 1-4z"/></svg></div>
+                        <h3 data-i18n="loopN1">Capture</h3>
+                        <p data-i18n="loopC1">Get the thought down before it fades.</p>
+                    </div>
+                    <div class="loop-node">
+                        <div class="loop-ic" aria-hidden="true"><svg viewBox="0 0 24 24" width="22" height="22" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M3 7h6l2 2h10v9a2 2 0 0 1-2 2H3z"/><path d="M3 7V5a2 2 0 0 1 2-2h3l2 2"/></svg></div>
+                        <h3 data-i18n="loopN2">Organize</h3>
+                        <p data-i18n="loopC2">Folders and tags keep it findable.</p>
+                    </div>
+                    <div class="loop-node">
+                        <div class="loop-ic" aria-hidden="true"><svg viewBox="0 0 24 24" width="22" height="22" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M12 3l1.9 4.1L18 9l-4.1 1.9L12 15l-1.9-4.1L6 9l4.1-1.9z"/><path d="M18 15l.9 2 2 .9-2 .9-.9 2-.9-2-2-.9 2-.9z"/></svg></div>
+                        <h3 data-i18n="loopN3">Refine</h3>
+                        <p data-i18n="loopC3">AI turns fragments into structure.</p>
+                    </div>
+                    <div class="loop-node">
+                        <div class="loop-ic" aria-hidden="true"><svg viewBox="0 0 24 24" width="22" height="22" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><circle cx="11" cy="11" r="7"/><path d="M21 21l-4.3-4.3"/></svg></div>
+                        <h3 data-i18n="loopN4">Retrieve</h3>
+                        <p data-i18n="loopC4">Old notes resurface exactly when a new idea needs them.</p>
+                    </div>
+                </div>
+                <div class="loop-return" aria-hidden="true">
+                    <svg viewBox="0 0 800 60" preserveAspectRatio="none" focusable="false"><path class="loop-return-path" d="M760 4 C 760 50, 40 50, 40 4" fill="none"/></svg>
+                </div>
+                <p class="loop-back" data-i18n="loopBack">…and back to capture</p>
+            </div>
+        </div>
+    </section>
+
     <section class="privacy">
         <div class="container privacy-card reveal">
             <div class="privacy-lead">
+                <span class="eyebrow on-grad" data-i18n="privacyEyebrow">Privacy</span>
                 <h2 data-i18n="privacyTitle">Your notes are your own</h2>
                 <p data-i18n="privacyDesc">No account is needed to browse this site. Your notes are user-owned information, and AI or sync features are presented in the app with clear controls and platform permissions.</p>
             </div>
@@ -304,8 +414,61 @@
         </div>
     </section>
 
+    <section id="compare" class="compare">
+        <div class="container">
+            <span class="eyebrow center" data-i18n="cmpEyebrow">The difference</span>
+            <h2 class="section-title" data-i18n="cmpTitle">Why not just keep doing it the old way?</h2>
+            <p class="section-sub" data-i18n="cmpSub">No hype — just where notes usually break down, and what AI Note does differently.</p>
+            <div class="compare-scroll reveal">
+                <table class="compare-table">
+                    <thead>
+                        <tr>
+                            <th scope="col" data-i18n="cmpCol0">Where notes break down</th>
+                            <th scope="col" data-i18n="cmpCol1">Scattered apps &amp; chats</th>
+                            <th scope="col" data-i18n="cmpCol2">Plain notes app</th>
+                            <th scope="col" class="cmp-hi"><span class="spark" aria-hidden="true">✦</span> AI Note</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr>
+                            <th scope="row" data-i18n="cmpR1">Capture friction</th>
+                            <td><span class="mk mk-n" aria-hidden="true">✕</span><span data-i18n="cmpR1a">Ideas get lost in threads</span></td>
+                            <td><span class="mk mk-p" aria-hidden="true">~</span><span data-i18n="cmpR1b">Open, then find the right place</span></td>
+                            <td class="cmp-hi"><span class="mk mk-y" aria-hidden="true">✓</span><span data-i18n="cmpR1c">One tap to a clean page</span></td>
+                        </tr>
+                        <tr>
+                            <th scope="row" data-i18n="cmpR2">Finding notes later</th>
+                            <td><span class="mk mk-n" aria-hidden="true">✕</span><span data-i18n="cmpR2a">Scroll back and hope</span></td>
+                            <td><span class="mk mk-p" aria-hidden="true">~</span><span data-i18n="cmpR2b">Search, if it was named well</span></td>
+                            <td class="cmp-hi"><span class="mk mk-y" aria-hidden="true">✓</span><span data-i18n="cmpR2c">Search plus folders and tags</span></td>
+                        </tr>
+                        <tr>
+                            <th scope="row" data-i18n="cmpR3">Turning notes into drafts</th>
+                            <td><span class="mk mk-n" aria-hidden="true">✕</span><span data-i18n="cmpR3a">Manual copy-paste rewrite</span></td>
+                            <td><span class="mk mk-p" aria-hidden="true">~</span><span data-i18n="cmpR3b">Still all on you</span></td>
+                            <td class="cmp-hi"><span class="mk mk-y" aria-hidden="true">✓</span><span data-i18n="cmpR3c">AI outlines, summaries, actions</span></td>
+                        </tr>
+                        <tr>
+                            <th scope="row" data-i18n="cmpR4">Bilingual writing</th>
+                            <td><span class="mk mk-n" aria-hidden="true">✕</span><span data-i18n="cmpR4a">Mixed-language mess</span></td>
+                            <td><span class="mk mk-p" aria-hidden="true">~</span><span data-i18n="cmpR4b">One interface language</span></td>
+                            <td class="cmp-hi"><span class="mk mk-y" aria-hidden="true">✓</span><span data-i18n="cmpR4c">Full EN / 中文 support</span></td>
+                        </tr>
+                        <tr>
+                            <th scope="row" data-i18n="cmpR5">Ads &amp; trackers</th>
+                            <td><span class="mk mk-n" aria-hidden="true">✕</span><span data-i18n="cmpR5a">Feeds compete for attention</span></td>
+                            <td><span class="mk mk-p" aria-hidden="true">~</span><span data-i18n="cmpR5b">Varies app to app</span></td>
+                            <td class="cmp-hi"><span class="mk mk-y" aria-hidden="true">✓</span><span data-i18n="cmpR5c">Zero ads, zero trackers</span></td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+        </div>
+    </section>
+
     <section id="faq" class="faq">
         <div class="container">
+            <span class="eyebrow center" data-i18n="faqEyebrow">FAQ</span>
             <h2 class="section-title" data-i18n="faqTitle">Frequently asked questions</h2>
             <div class="faq-list">
                 <details class="faq-item reveal"><summary data-i18n="q1">What can AI Note do?</summary><p data-i18n="a1">Capture ideas quickly, organize them with folders and tags, and use AI to summarize, rewrite, classify, and extract actions — turning rough notes into useful structure.</p></details>
@@ -364,6 +527,14 @@
         </div>
         <div class="container footer-bottom">
             <p>&copy; <span id="currentYear">2026</span> WeiProduct. <span data-i18n="footerRights">All rights reserved.</span></p>
+            <div class="footer-controls">
+                <button class="icon-btn" type="button" id="footThemeToggle" aria-label="Toggle dark mode">
+                    <svg class="i-sun" viewBox="0 0 24 24" width="18" height="18" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><circle cx="12" cy="12" r="4.5"/><path d="M12 2v2.5M12 19.5V22M2 12h2.5M19.5 12H22M4.9 4.9l1.8 1.8M17.3 17.3l1.8 1.8M19.1 4.9l-1.8 1.8M6.7 17.3l-1.8 1.8"/></svg>
+                    <svg class="i-moon" viewBox="0 0 24 24" width="18" height="18" fill="currentColor"><path d="M21 12.8A8.5 8.5 0 1 1 11.2 3a6.6 6.6 0 0 0 9.8 9.8z"/></svg>
+                </button>
+                <button class="lang-switch" type="button" id="footLangSwitch" aria-label="Switch language">中文</button>
+                <a href="#top" class="footer-top" data-i18n="backTop">↑ Back to top</a>
+            </div>
         </div>
     </footer>
 
