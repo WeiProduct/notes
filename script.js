@@ -96,7 +96,18 @@ const I18N = {
     footerProduct: 'Product', footerCompany: 'Company', footerContact: 'Contact', footerPrivacy: 'Privacy', footerTerms: 'Terms',
     footerRights: 'All rights reserved.',
     backTop: '↑ Back to top',
-    stickySub: 'Capture & refine · Free', stickyGet: 'Get'
+    stickySub: 'Capture & refine · Free', stickyGet: 'Get',
+    /* AI-AVATAR */
+    aiTitle: 'AI Avatar · AI Note Assistant',
+    aiGreeting: 'Hi! I\'m the AI avatar for AI Note ✍️ Ask me about AI writing support, organizing notes, privacy, or pricing.',
+    aiPlaceholder: 'Type your question…',
+    aiSend: 'Send',
+    aiChip1: 'What can the AI do with my notes?',
+    aiChip2: 'Do I need an account?',
+    aiChip3: 'Is it free? Which languages?',
+    aiDisclaimer: 'AI-generated · for reference only',
+    aiError: 'Sorry, the assistant is temporarily unreachable — please try again later. （抱歉，AI 助手暂时连不上，请稍后再试。）'
+    /* /AI-AVATAR */
   },
   'zh-CN': {
     skip: '跳到主要内容',
@@ -194,7 +205,18 @@ const I18N = {
     footerProduct: '产品', footerCompany: '公司', footerContact: '联系', footerPrivacy: '隐私政策', footerTerms: '使用条款',
     footerRights: '保留所有权利。',
     backTop: '↑ 回到顶部',
-    stickySub: '记录与精修 · 免费', stickyGet: '获取'
+    stickySub: '记录与精修 · 免费', stickyGet: '获取',
+    /* AI-AVATAR */
+    aiTitle: 'AI分身 · AI Note 助手',
+    aiGreeting: '你好！我是 AI Note 的 AI分身 ✍️ 关于 AI 写作辅助、笔记整理、隐私或价格，都可以问我。',
+    aiPlaceholder: '输入你的问题…',
+    aiSend: '发送',
+    aiChip1: 'AI 能帮我的笔记做什么？',
+    aiChip2: '需要注册账号吗？',
+    aiChip3: '收费吗？支持哪些语言？',
+    aiDisclaimer: 'AI 生成，仅供参考',
+    aiError: '抱歉，AI 助手暂时连不上，请稍后再试。(Sorry, the assistant is temporarily unreachable — please try again later.)'
+    /* /AI-AVATAR */
   }
 };
 
@@ -250,6 +272,12 @@ function applyLang(lang) {
     const k = el.getAttribute('data-i18n-aria');
     if (t[k] !== undefined) el.setAttribute('aria-label', t[k]);
   });
+  /* AI-AVATAR: translate placeholder attributes */
+  document.querySelectorAll('[data-i18n-ph]').forEach(el => {
+    const k = el.getAttribute('data-i18n-ph');
+    if (t[k] !== undefined) el.setAttribute('placeholder', t[k]);
+  });
+  /* /AI-AVATAR */
   document.documentElement.lang = currentLang;
   const label = currentLang === 'zh-CN' ? 'EN' : '中文';
   ['langSwitch', 'footLangSwitch'].forEach(id => {
@@ -451,3 +479,147 @@ document.addEventListener('DOMContentLoaded', () => {
     });
   });
 });
+
+/* AI-AVATAR: floating "AI分身" assistant widget */
+(function () {
+  const AI_PROXY_URL = 'https://personal-portfolio-api-sandy.vercel.app/api/chat-proxy';
+  const AI_SYSTEM_PROMPT = [
+    'You are the "AI分身" (AI avatar) assistant on the promo website of AI Note, an iOS note-taking app by WeiProduct.',
+    '',
+    'App facts (the ONLY facts you may state):',
+    '- One-liner: capture ideas fast, keep them organized, and let AI turn rough notes into useful structure.',
+    '- Key features: fast capture (a clean writing space opens in a tap); organization with folders, tags, and lightweight context; AI writing support — summarize, rewrite/clarify, suggest tags and folders, extract decisions and follow-up actions, and build outlines; searchable knowledge (search plus folders and tags, so old notes can be found again); a capture → organize → refine → retrieve loop that keeps notes useful.',
+    '- Privacy: no account needed; your notes are your own information; clear user controls over AI features; no ads, no trackers.',
+    '- Platform: iPhone (iOS).',
+    '- Price: free.',
+    '- Languages: fully bilingual interface — English and Simplified Chinese (中文).',
+    '- App Store link: https://apps.apple.com/app/id6749283592',
+    '',
+    'Style rules:',
+    '- ALWAYS reply in the same language as the user\'s most recent message: English question → English answer, 中文提问 → 中文回答. Do NOT switch languages unless the user does.',
+    '- Keep replies to 1-3 short sentences; be friendly and concrete.',
+    '- NEVER invent download counts, ratings, reviews, or features not listed above.',
+    '- If asked about unrelated topics, politely steer the conversation back to AI Note.',
+    '- When the user wants to download or try the app, point them to the App Store link.'
+  ].join('\n');
+  const AI_MAX_HISTORY = 12;
+
+  document.addEventListener('DOMContentLoaded', () => {
+    const toggle = document.getElementById('aiToggle');
+    const panel = document.getElementById('aiPanel');
+    const closeBtn = document.getElementById('aiClose');
+    const msgs = document.getElementById('aiMsgs');
+    const chipsWrap = document.getElementById('aiChips');
+    const form = document.getElementById('aiForm');
+    const input = document.getElementById('aiInput');
+    const sendBtn = document.getElementById('aiSendBtn');
+    if (!toggle || !panel || !msgs || !form || !input) return;
+
+    let history = [];
+    let greeted = false;
+    let busy = false;
+
+    function addBubble(role, text, i18nKey) {
+      const div = document.createElement('div');
+      div.className = 'ai-msg ' + (role === 'user' ? 'user' : 'bot');
+      if (i18nKey) {
+        div.setAttribute('data-i18n', i18nKey); // follows future language switches too
+        div.textContent = I18N[currentLang][i18nKey];
+      } else {
+        div.textContent = text;
+      }
+      msgs.appendChild(div);
+      msgs.scrollTop = msgs.scrollHeight;
+      return div;
+    }
+
+    function showTyping() {
+      const div = document.createElement('div');
+      div.className = 'ai-msg bot ai-typing';
+      div.innerHTML = '<span></span><span></span><span></span>';
+      msgs.appendChild(div);
+      msgs.scrollTop = msgs.scrollHeight;
+      return div;
+    }
+
+    function openPanel() {
+      panel.hidden = false;
+      toggle.setAttribute('aria-expanded', 'true');
+      if (!greeted) { greeted = true; addBubble('bot', '', 'aiGreeting'); }
+      input.focus();
+    }
+    function closePanel() {
+      panel.hidden = true;
+      toggle.setAttribute('aria-expanded', 'false');
+      toggle.focus();
+    }
+
+    async function send(text) {
+      text = (text || '').trim();
+      if (!text || busy) return;
+      busy = true;
+      if (sendBtn) sendBtn.disabled = true;
+      if (chipsWrap) chipsWrap.hidden = true;
+      addBubble('user', text);
+      history.push({ role: 'user', content: text });
+      history = history.slice(-AI_MAX_HISTORY);
+      const typing = showTyping();
+      try {
+        const res = await fetch(AI_PROXY_URL, {
+          method: 'POST',
+          headers: { 'Content-Type': 'application/json' },
+          body: JSON.stringify({
+            model: 'gpt-4o-mini',
+            messages: [{ role: 'system', content: AI_SYSTEM_PROMPT }].concat(history),
+            max_tokens: 350
+          })
+        });
+        if (!res.ok) throw new Error('HTTP ' + res.status);
+        const data = await res.json();
+        let reply = '';
+        if (data && data.choices && data.choices[0]) {
+          const m = data.choices[0].message;
+          reply = (m && m.content) || data.choices[0].text || '';
+        }
+        if (!reply && data && typeof data.content === 'string') reply = data.content;
+        if (!reply && data && typeof data.reply === 'string') reply = data.reply;
+        if (!reply && data && typeof data.message === 'string') reply = data.message;
+        reply = (reply || '').trim();
+        if (!reply) throw new Error('empty reply');
+        typing.remove();
+        addBubble('bot', reply);
+        history.push({ role: 'assistant', content: reply });
+        history = history.slice(-AI_MAX_HISTORY);
+      } catch (err) {
+        typing.remove();
+        addBubble('bot', '', 'aiError');
+      } finally {
+        busy = false;
+        if (sendBtn) sendBtn.disabled = false;
+      }
+    }
+
+    toggle.addEventListener('click', () => (panel.hidden ? openPanel() : closePanel()));
+    if (closeBtn) closeBtn.addEventListener('click', closePanel);
+    document.addEventListener('keydown', e => { if (e.key === 'Escape' && !panel.hidden) closePanel(); });
+    if (chipsWrap) chipsWrap.querySelectorAll('.ai-chip').forEach(chip => {
+      chip.addEventListener('click', () => send(chip.textContent));
+    });
+    form.addEventListener('submit', e => {
+      e.preventDefault();
+      const v = input.value;
+      input.value = '';
+      send(v);
+    });
+
+    // Dev/verify affordance: ?aichat=open auto-opens; ?aichat=demo also sends chip 1 for real.
+    const q = location.search;
+    if (q.indexOf('aichat=open') !== -1 || q.indexOf('aichat=demo') !== -1) {
+      openPanel();
+      if (q.indexOf('aichat=demo') !== -1) {
+        setTimeout(() => send(I18N[currentLang].aiChip1), 600);
+      }
+    }
+  });
+})();
+/* /AI-AVATAR */
